@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.card {
+    padding-top: 30px;
+}
+.card {
+    margin: auto;
+    width: 400px;
+    text-align: left;
+}
+
+.user__photo {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.user__nickname {
+    margin-bottom: 10px;
+}
+
+.user__description {
+    margin-bottom: 10px;
+}
+
