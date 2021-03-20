@@ -1,23 +1,31 @@
 const userPhoto = document.querySelector('.user__photo');
 const userName = document.querySelector('.user__nickname');
 const userBio = document.querySelector('.user__description');
+const url = window.location.search;
+const params = new URLSearchParams(url);
+console.log(params.get("name"));
+console.log("url", url);
 
-let url = prompt('Enter your name', '6thSence');
+let nickName = params.get("name");
+if (!nickName) {
+    nickName = 'Icreateacoolname';
+}
 
-async function getResponse(url) {
-    let response = await fetch(`https://api.github.com/users/${(url)}`);
-    let content = await response.json();
+async function getResponse(nickName) {
+    const response = await fetch(`https://api.github.com/users/${nickName}`);
+    
+    const content = await response.json();
 
     let name;
     let bio;
 
-    if (content.name != null) {
+    if (content.name) {
         name = userName.append(content.name);
     }else {
         userName.innerHTML = 'Информация о пользователе недоступна!';
     }
 
-    if (content.bio != null) {
+    if (content.bio) {
         bio = userBio.append(content.bio);
     }else {
         userBio.innerHTML = 'Информация о пользователе недоступна!';
@@ -34,4 +42,4 @@ async function getResponse(url) {
 }
 
 
-getResponse(url);
+getResponse(nickName);
