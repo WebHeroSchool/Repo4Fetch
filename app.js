@@ -2,10 +2,10 @@ const userPhoto = document.querySelector('.user__photo');
 const userName = document.querySelector('.user__nickname');
 const userBio = document.querySelector('.user__description');
 
-let url = prompt('Enter the link', 'https://api.github.com/users/6thSence');
+let url = prompt('Enter your name', '6thSence');
 
 async function getResponse(url) {
-    let response = await fetch(url);
+    let response = await fetch(`https://api.github.com/users/${(url)}`);
     let content = await response.json();
 
     let name;
