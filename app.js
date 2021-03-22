@@ -5,14 +5,22 @@ const date = document.querySelector('.date');
 // const url = window.location.search;
 const url = 'https://api.github.com/users/';
 const params = new URLSearchParams(url);
+const preloader = document.querySelector('.preloader');
 // console.log(params.get("name"));
 // console.log("url", url);
 
-let nickName = prompt('Enter Your NickName', 'Icreateacoolname');
+window.onload = function stopPreloader() {
+  setTimeout(function () {
+    document.body.classList.add('loaded_hiding');
+    document.body.classList.add('loaded');
+  }, 2000);
+}
+
+const nickName = prompt('Enter your nickName', 'Icreateacoolname');
+
 if (!nickName) {
     nickName = 'Icreateacoolname';
 }
-
 
 // let getnickName = params.get("name");
 
@@ -24,8 +32,9 @@ const delay = ms => {
   })
 }
 
+
 async function getResponse() {
-  await delay(2000);
+  await delay(3000);
   try { 
     let response = await fetch(`${url}${nickName}`);
     if(response.status >= 400) {
@@ -58,7 +67,7 @@ async function getUserData() {
 }//дожидается конца работы getResponse и работает с данными
 
 async function getDate() {
-  await delay(5000);
+  await delay(4000);
   const nowDate = new Date()
   date.append(nowDate);
   return nowDate;
