@@ -4,7 +4,7 @@ const userBio = document.querySelector('.user__description');
 const date = document.querySelector('.date');
 // const url = window.location.search;
 const url = 'https://api.github.com/users/';
-const params = new URLSearchParams(url);
+// const params = new URLSearchParams(url);
 const preloader = document.querySelector('.preloader');
 // console.log(params.get("name"));
 // console.log("url", url);
@@ -16,10 +16,11 @@ window.onload = function stopPreloader() {
   }, 2000);
 }
 
-const nickName = prompt('Enter your nickName', 'Icreateacoolname');
+const input = document.getElementById('input');
 
-if (!nickName) {
-    nickName = 'Icreateacoolname';
+input.onkeyup = async function() {
+  let nickName =  input.value;
+  getResponse(nickName);
 }
 
 // let getnickName = params.get("name");
@@ -33,17 +34,16 @@ const delay = ms => {
 }
 
 
-async function getResponse() {
-  await delay(3000);
+async function getResponse(nickName) {
   try { 
-    let response = await fetch(`${url}${nickName}`);
+    let response = await fetch(url+nickName);
     if(response.status >= 400) {
       throw new Error('не удалось найти такого пользователя');
     }
     return response.json();
   }
   catch(e) {
-    alert(`Fetch Error: ${e.message} o_O`);
+    console.log(`Fetch Error: ${e.message} o_O`);
   }
   
 } //получает запров в виде json файла
