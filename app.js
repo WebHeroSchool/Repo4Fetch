@@ -15,7 +15,7 @@ const startPreloader = () => {
   document.body.classList.remove('loaded');
 }
 async function stopPreloader() { 
-  await delay(1000);
+  await delay(2000);
   document.body.classList.add('loaded_hiding');
   document.body.classList.add('loaded');
 }
