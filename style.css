@@ -103,3 +103,7 @@ body {
   .loaded .preloader {
     display: none;
   }
+  
+  .hidden {
+    display: none;
+  }
